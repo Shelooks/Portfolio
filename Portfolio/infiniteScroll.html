@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #863c11, #fdfafa);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff5722;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .menu-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .menu-item button {
+            background: #ff5722;
+            color: #d0820d;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-item button:hover {
+            background: #e64a19;
+        }
+
+        .order-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: #0da48d;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-summary h2 {
+            margin-bottom: 20px;
+            color: #ff5722;
+        }
+
+        .order-summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .order-summary ul li {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-summary .total {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+
+        .checkout-btn:hover {
+            background: #43a047;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Order App</h1>
+
+        <!-- Menu Section -->
+        <div class="menu" id="menu">
+            <!-- Menu items will be dynamically added here -->
+        </div>
+
+        <!-- Order Summary Section -->
+        <div class="order-summary" id="order-summary">
+            <h2>Order Summary</h2>
+            <ul id="order-list">
+                <!-- Order items will be dynamically added here -->
+            </ul>
+            <div class="total" id="total">Total: R0.00</div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Menu items data (Prices in Rands)
+        const menuItems = [
+            { id: 1, name: "Burger", price: 89.99, image: "https://via.placeholder.com/200" },
+            { id: 2, name: "Fries", price: 29.99, image: "https://via.placeholder.com/200" },
+            { id: 3, name: "Pizza", price: 129.99, image: "https://via.placeholder.com/200" },
+            { id: 4, name: "Chicken Wings", price: 99.99, image: "https://via.placeholder.com/200" },
+            { id: 5, name: "Soft Drink", price: 19.99, image: "https://via.placeholder.com/200" },
+        ];
+
+        // Order data
+        let order = [];
+
+        // Function to render menu items
+        function renderMenu() {
+            const menu = document.getElementById("menu");
+            menuItems.forEach(item => {
+                const menuItem = document.createElement("div");
+                menuItem.className = "menu-item";
+                menuItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>R${item.price.toFixed(2)}</p> <!-- Display price in Rands -->
+                    <button onclick="addToOrder(${item.id})">Add to Order</button>
+                `;
+                menu.appendChild(menuItem);
+            });
+        }
+
+        // Function to add item to order
+        function addToOrder(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            order.push(item);
+            renderOrder();
+        }
+
+        // Function to render order summary
+        function renderOrder() {
+            const orderList = document.getElementById("order-list");
+            const totalElement = document.getElementById("total");
+            orderList.innerHTML = ""; // Clear previous order items
+
+            let total = 0;
+            order.forEach(item => {
+                const orderItem = document.createElement("li");
+                orderItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>R${item.price.toFixed(2)}</span> <!-- Display price in Rands -->
+                `;
+                orderList.appendChild(orderItem);
+                total += item.price;
+            });
+
+            totalElement.textContent = `Total: R${total.toFixed(2)}`; <!-- Display total in Rands -->
+        }
+
+        // Function to handle checkout
+        function checkout() {
+            if (order.length === 0) {
+                alert("Your order is empty!");
+                return;
+            }
+            alert("Thank you for your order!");
+            order = []; // Clear the order
+            renderOrder();
+        }
+
+        // Initialize the app
+        renderMenu();
+    </script>
+</body>
+</html>

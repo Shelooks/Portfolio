@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Portfolio  
+        </title>
+        <meta charset="UTF-8">
+    </head>
+    <style>
+        h1, h2, h3 {
+            color: rgb(49, 13, 255);
+            font-family: fantasy;
+            font-weight: bolder;
+        }
+        body {
+            background-color: rgb(70, 59, 169);
+            color: rgb(218, 188, 152);
+            text-align: center;
+            font-size: 3ex;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(90deg, rgb(70, 59, 169), rgb(254, 19, 203));
+        }
+        .content {
+            min-height: 150vh; /* Makes the page scrollable */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        a {
+            color: rgb(234, 143, 39);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: rgba(207, 61, 151, 0.841);
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 2ex;
+        }
+        /* Navigation Menu Styles */
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+            background: none; /* Removed background */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: rgb(218, 188, 152);
+            text-decoration: none;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: rgb(0, 93, 254);
+        }
+        #facebook{
+            border-radius: 30px;
+            background-color: rgb(115, 0, 255);
+            border-style: hidden;
+            height: 20px;
+            width: 30ex;
+        }
+        #facebook a:hover{
+            color:azure;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        li {
+            text-align: center;
+        }
+        img{
+            border-radius:50%;
+            margin-bottom:10px;
+        }
+    </style>
+    <body>
+        <div class="content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>
+                Explore my journey as an aspiring frontend developer.
+            </p><p>
+            I recently began my journey into programming and web development.<br> My main programming languages are HTML, CSS, and JavaScript, and I have some foundational knowledge of Python and SQL.<br> I am currently learning web development through IT Varsity by FNB, where I am building my skills step by step.
+            </p>
+
+            <h2 id="about">About Me</h2>
+            <p>
+                I recently began my journey into programming and web development. My main programming languages are HTML, CSS, and JavaScript, and I have some foundational knowledge of Python and SQL.
+            </p>
+
+            <h2 id="projects">My Projects</h2>
+            <p>
+                While I don’t have professional experience yet, I have been working on personal projects to sharpen my skills.
+            </p>
+
+            <h2 id="goals">My Goals</h2>
+            <p>
+                My goal is to become a skilled frontend developer and eventually expand into full-stack development.
+            </p>
+
+            <h2 id="contact">Contact Me</h2>
+            <p>
+                Feel free to reach out to me through my social media platforms.
+            </p>
+            <p>
+                <ul>
+                    <li>
+                        <img src="facebook.png" alt="FacebookIcon" width="100" height="100" ><br><button id="facebook" ><a href="https://www.facebook.com/makwakwaxiluva"> Facebook</a> 
+                        </button>
+                    </li>
+                    <li>
+                        <img src="instagram.jpg" alt="InstagramIcon" width="100" height="100"><br><button id="facebook"><a href="https://www.instagram.com/makwakwa_xiluva"> Instagram</a> 
+                        </button>
+                    </li>
+                    <li>
+                        <img src="linkedin.png" alt="LinkedIcon" width="100" height="100"><br><button id="facebook"><a href="https://www.linkedin.com/in/xiluva-makwakwa"> LinkedIn</a> 
+                        </button>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>
